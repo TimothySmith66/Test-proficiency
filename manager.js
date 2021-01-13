@@ -1,5 +1,5 @@
 class manager{
-    constructor(officeNumber, gitRole){
+    constructor(officeNumber){
         this.officeNumber =officeNumber;
         this.gitRole = manager
     } 
