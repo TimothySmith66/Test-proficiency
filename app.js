@@ -10,10 +10,33 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const getEmployeeType =() =>{
+inquirer 
+  .prompt([
+      {
+    type: 'list',
+    message: 'What kind of employee are you?',
+    name: 'employeeType',
+    choices: ["manager", "intern", "Engineer"],
+      }
+  ])
+  .then(geese => {
+      console.log("I am "+ geese.employeeType)
+      if( geese.employeeType === "manager"){
+        console.log("successful")
+      } else if("")
+   
+  })
+  .catch(error => {
+    if(error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else when wrong
+    }
+  });
+}
 
-describe("employee class", () => {
-
-
+getEmployeeType()
     
 
 
