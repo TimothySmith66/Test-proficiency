@@ -9,35 +9,88 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const Prompt = require("inquirer/lib/prompts/base");
 
-const getEmployeeType =() =>{
-inquirer 
-  .prompt([
+const getEmployeeType = () => {
+  inquirer
+    .prompt([
       {
-    type: 'list',
-    message: 'What kind of employee are you?',
-    name: 'employeeType',
-    choices: ["manager", "intern", "Engineer"],
+        type: 'input',
+        message: "What is the employee's name?",
+        name: 'employeeName',
+      },
+      {
+        type: 'input',
+        message: 'What is their id number?',
+        name: 'idNumber',
+
+      },
+      {
+        type: 'input',
+        message: 'What is their email?',
+        name: 'email',
+
+      },
+      {
+        type: 'list',
+        message: 'What kind of employee are they?',
+        name: 'employeeType',
+        choices: ["Manager", "Intern", "Engineer"],
+      },
+      
+     
+    ])
+    .then(geese => {
+      console.log("I am " + geese.employeeType)
+      if (geese.employeeType === "Manager") {
+
+        inquirer
+          .prompt([
+            {
+              type: 'input',
+              message: 'What is their office number',
+              name: 'ManagerNumber',
+            }
+          ])
+
       }
-  ])
-  .then(geese => {
-      console.log("I am "+ geese.employeeType)
-      if( geese.employeeType === "manager"){
-        console.log("successful")
-      } else if("")
-   
-  })
-  .catch(error => {
-    if(error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else when wrong
-    }
-  });
+      else if (geese.employeeType === "Intern") {
+        inquirer
+          .prompt([
+            {
+              type: 'input',
+              message: 'What school are they from?',
+              name: 'schoolType',
+            }
+          ])
+      }
+
+      else if (geese.employeeType === "Engineer") {
+        inquirer
+          .prompt([
+            {
+              type: 'input',
+              message: 'What is their gitHub user name?',
+              name: 'gitHubUserName',
+            }
+          ])
+
+
+      }
+    })
+    .then(inquirer
+      .prompt(addNewMember?))
+    .catch (error => {
+  if (error.isTtyError) {
+    // Prompt couldn't be rendered in the current environment
+  } else {
+    // Something else when wrong
+  }
+});
 }
 
 getEmployeeType()
-    
+
 
 
 
